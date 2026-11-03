@@ -60,7 +60,7 @@ public:
 	FVector GetInteractionLocation() const;
 	virtual FVector GetInteractionLocation_Implementation() const
 	{
-		const auto actor = Cast<AActor>(_getUObject());
+		const auto actor = Cast<AActor>(this);
 		return IsValid(actor) ? actor->GetActorLocation() : FVector::ZeroVector;
 	}
 
@@ -71,7 +71,7 @@ public:
 		// override 하지 않으면 모든 Mesh 컴포넌트를 가져옴.
 		TSet<UMeshComponent*> mesh_components;
 
-		const auto actor = Cast<AActor>(_getUObject());
+		const auto actor = Cast<AActor>(this);
 		if (IsInvalid(actor))
 			return mesh_components;
 
